@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sulien's Poems — Poems</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1 class="brand-title">Sulien's Poems</h1>
+        <p class="tagline">Letters that feel like they've lived.</p>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="poems.html" class="nav-link active">Poems</a>
+        <a href="order.html" class="nav-link">Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container poems-page">
+    <h2 class="section-title">Poem Letters</h2>
+    <p class="lead">Click any letter to open it as if you were gently unfolding parchment.</p>
+
+    <div class="cards-grid">
+      <!-- Sample poem cards -->
+      <article class="poem-card" data-title="Letter to the One Who Stayed" data-text="I learned to keep your quiet like a room\nwhere light would come and leave—\nI traced the shape of your small hope\non the back of my hands.\n\nForgive me for the times I turned love into a tool,\nfor the winter I kept my hands folded against the sun.\n\n— Sulien">
+        <div class="poem-card-inner">
+          <h3>Letter to the One Who Stayed</h3>
+          <p class="excerpt">I learned to keep your quiet like a room where light would come and leave...</p>
+          <button class="open-btn">Open</button>
+        </div>
+      </article>
+
+      <article class="poem-card" data-title="Letters I Never Sent" data-text="There is a drawer with unsaid words—\nI keep the rusted key beside the bed,\nand I sleep with the echo of your name,\nwriting it like a prayer.\n\n— Sulien">
+        <div class="poem-card-inner">
+          <h3>Letters I Never Sent</h3>
+          <p class="excerpt">There is a drawer with unsaid words—I keep the rusted key beside the bed...</p>
+          <button class="open-btn">Open</button>
+        </div>
+      </article>
+
+      <article class="poem-card" data-title="Letter of Forgiveness" data-text="I pardon what I once expected of you;\nI pardon the small gods I built to measure us.\nThis paper will hold the rest.\n\n— Sulien">
+        <div class="poem-card-inner">
+          <h3>Letter of Forgiveness</h3>
+          <p class="excerpt">I pardon what I once expected of you; I pardon the small gods I built to measure us...</p>
+          <button class="open-btn">Open</button>
+        </div>
+      </article>
+
+      <!-- add more poem cards here -->
+    </div>
+
+    <div class="back-home">
+      <a href="index.html" class="btn btn-outline">← Back home</a>
+      <a href="order.html" class="btn">Order a similar letter</a>
+    </div>
+  </main>
+
+  <!-- Modal to show poem -->
+  <div id="poemModal" class="modal" aria-hidden="true">
+    <div class="modal-sheet">
+      <button id="modalClose" class="modal-close" aria-label="Close">✕</button>
+      <div class="sheet-title" id="modalTitle"></div>
+      <pre class="sheet-text" id="modalText"></pre>
+      <div class="modal-actions">
+        <a id="orderSimilar" href="order.html" class="btn">Order Similar</a>
+        <a id="waOrder" class="btn btn-outline" target="_blank">Order via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year2"></span> Sulien's Poems — Crafted with memory.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

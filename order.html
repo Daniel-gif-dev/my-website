@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sulien's Poems — Order</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1 class="brand-title">Sulien's Poems</h1>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="poems.html" class="nav-link">Poems</a>
+        <a href="order.html" class="nav-link active">Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="order-page">
+    <div class="container order-inner">
+      <section class="order-card">
+        <h2 class="section-title">Order a Personalized Letter</h2>
+        <p class="lead">Tell me the feeling and a few details — I’ll write it as if it’s already lived a lifetime.</p>
+
+        <!-- Netlify-ready form -->
+        <form name="order" method="POST" data-netlify="true" class="order-form">
+          <input type="hidden" name="form-name" value="order" />
+          <label class="form-row">
+            <span>Your name (optional)</span>
+            <input type="text" name="buyerName" placeholder="Your name" />
+          </label>
+
+          <label class="form-row">
+            <span>Recipient name</span>
+            <input required type="text" name="recipientName" placeholder="Who is the letter for?" />
+          </label>
+
+          <label class="form-row">
+            <span>Email (for delivery)</span>
+            <input required type="email" name="email" placeholder="you@example.com" />
+          </label>
+
+          <label class="form-row">
+            <span>Theme / Mood</span>
+            <select name="theme">
+              <option>Longing</option>
+              <option>Closure</option>
+              <option>Forgiveness</option>
+              <option>Love</option>
+              <option>Greed</option>
+              <option>Hate</option>
+              <option>Lust</option>
+              <option>Obsession</option>
+              <option>Religion</option>
+            </select>
+          </label>
+
+          <label class="form-row">
+            <span>Notes for the poem (a sentence or two)</span>
+            <textarea name="notes" placeholder="A memory, a line, or a mood..." rows="5"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Submit Order</button>
+            <!-- WhatsApp: replace PHONE_NUMBER_HERE with your number in international form without plus (eg: 2347012638498) -->
+            <a id="waOrderBtn" class="btn btn-outline" target="_blank">Order via WhatsApp</a>
+          </div>
+
+          <p class="small">After submission we’ll contact you by email or WhatsApp with next steps and delivery time.</p>
+        </form>
+      </section>
+
+      <aside class="order-info">
+        <div class="paper-preview">
+          <h4>How it arrives</h4>
+          <p>Printed on textured parchment, torn edges, sealed with a wax sticker stamped “S”. Option for framing or a digital download.</p>
+          <ul>
+            <li>Digital letter (PNG + PDF)</li>
+            <li>Physical letter (sealed + envelope)</li>
+            <li>Framed keepsake (optional)</li>
+          </ul>
+        </div>
+
+        <div class="pricing">
+          <h4>Starting price</h4>
+          <p>Digital: ₦1,500 — Physical & shipping: quoted per order.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year3"></span> Sulien's Poems — Crafted with memory.</p>
+    </div>
+  </footer>
+
+  <script>
+    // build WhatsApp link from form contents; user must replace PHONE_NUMBER_HERE with their number (no leading +)
+    (function () {
+      const waBtn = document.getElementById('waOrderBtn');
+      const form = document.querySelector('.order-form');
+
+      function buildLink() {
+        // put your number here (no plus sign); e.g. 2347012638498
+        const PHONE = '2347012638498';
+        const buyer = form.querySelector('input[name="buyerName"]').value || 'Anonymous';
+        const recipient = form.querySelector('input[name="recipientName"]').value || 'Recipient';
+        const theme = form.querySelector('select[name="theme"]').value;
+        const notes = form.querySelector('textarea[name="notes"]').value || '';
+        const text = encodeURIComponent(`Hi Sulien, I'd like to order a personalized letter.%0AFrom: ${buyer}%0ATo: ${recipient}%0ATheme: ${theme}%0ANotes: ${notes}`);
+        return `https://wa.me/${PHONE}?text=${text}`;
+      }
+
+      // update link when inputs change
+      form.addEventListener('input', () => {
+        waBtn.href = buildLink();
+      });
+
+      // initial
+      waBtn.href = buildLink();
+    })();
+  </script>
+</body>
+</html>
+
+
